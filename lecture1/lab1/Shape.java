@@ -1,4 +1,4 @@
-package lab1;
+package lecture1.lab1;
 
 interface Shape {
 
