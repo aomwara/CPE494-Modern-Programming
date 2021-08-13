@@ -1,0 +1,36 @@
+name: "Security_test"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  analyze:
+    name: Sec-Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
+
+    steps:
+    - name: Sec-Checkout-Repo
+      uses: actions/checkout@v2
+
+    - name: Sec-Initialize-CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Sec-Build
+      uses: github/codeql-action/autobuild@v1
+
+    - name: Sec-Perform
+      uses: github/codeql-action/analyze@v1
