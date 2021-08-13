@@ -1,4 +1,4 @@
-package lab1;
+package lecture1.lab1;
 
 public class Rectangle implements Shape {
     private double width;
