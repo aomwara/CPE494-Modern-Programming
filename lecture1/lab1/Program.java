@@ -58,7 +58,23 @@ public class Program {
     }
 
     private void trinagle() {
+        Scanner Scanner = new Scanner(System.in);
+        System.out.println("\n(Right) Triangle");
+        System.out.println("----------------------");
+        System.out.println(" | Please enter base and height of (Right) Triangle");
 
+        System.out.print(" | Base: > ");
+        double base = Scanner.nextDouble();
+        System.out.print(" | Height: > ");
+        double height = Scanner.nextDouble();
+        System.out.println(" | ");
+
+        Shape triangle = new Triangle(base, height);
+        System.out.println(" | > Area = " + triangle.getArea());
+        System.out.println(" | > Perimeter = " + triangle.getPerimeter());
+        System.out.println(" | ");
+
+        Scanner.close();
     }
 
     private void circle() {
