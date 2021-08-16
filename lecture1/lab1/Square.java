@@ -1,6 +1,6 @@
 package lecture1.lab1;
 
-public class Square {
+public class Square implements Shape {
     private double width;
 
     public Square(double width) {
