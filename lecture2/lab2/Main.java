@@ -1,153 +1,218 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        ComplexNumber complex1;
-        ComplexNumber complex2;
-        ComplexNumber complex3;
-        float a;
-        float b;
-        int choice = 0;
-        // Main menu
-        System.out.println("\n===COMPLEX CALCULATOR===");
-        while (choice != 5) {
-            System.out.println("\nWhat would you like to do?\n");
-            System.out.println("1: Add");
-            System.out.println("2: Subtract");
-            System.out.println("3: Multiply");
-            System.out.println("4: Divide");
-            System.out.println("5: Quit\n");
-            choice = input.nextInt();
-            // Addition
-            if (choice == 1) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi) + (c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.add(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Subtraction
-            if (choice == 2) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi) - (c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.subtract(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Multiplication
-            if (choice == 3) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi)(c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.multiply(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Division
-            if (choice == 4) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi)/(c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.divide(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-        }
-        input.close();
-        System.out.println("\nHave a nice day!\n");
+        System.out.println("Create an imaginary number in rectangular form with real = 1 and imaginary = 2\n");
+        ComplexNumber complexNum1 = new ComplexNumber.Builder().a(1).b(2).build();
+        ComplexNumber.printAsRectangularForm(complexNum1);
+        System.out.println("Now print the same imaginary number in polar form\n");
+        ComplexNumber.printAsPolarForm(complexNum1);
+        System.out.println("Create an imaginary number in polar form with r = 3 and theta = PI Rad.\n");
+        ComplexNumber complexNum2 = new ComplexNumber.Builder().r(3).thetaAsRadians(Math.PI).build();
+        ComplexNumber.printAsPolarForm(complexNum2);
+        System.out.println("Now print the same imaginary number in rectangular form\n");
+        ComplexNumber.printAsRectangularForm(complexNum2);
+        System.out.println("Now sum these two imaginary numbers\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.add(complexNum1, complexNum2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.add(complexNum1, complexNum2));
+        System.out.println("Now subtract these two imaginary numbers\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.subtract(complexNum1, complexNum2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.subtract(complexNum1, complexNum2));
+        System.out.println("Now multiply these two imaginary numbers\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.multiply(complexNum1, complexNum2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.multiply(complexNum1, complexNum2));
+        System.out.println("Now try: (1 + 2i) + (3 + 4i)\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.add(1, 2, 3, 4, 1));
+        ComplexNumber.printAsPolarForm(ComplexNumber.add(1, 2, 3, 4, 1));
+        System.out.println("Now try: 3(cos(PI) + isin(PI)) + 5(cos(PI/2) + (sin(PI/2)))i\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.add(3, Math.PI, 5, Math.PI / 2, 2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.add(3, Math.PI, 5, Math.PI / 2, 2));
+        System.out.println("Now try: (1 + 2i) - (3 + 4i)\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.subtract(1, 2, 3, 4, 1));
+        ComplexNumber.printAsPolarForm(ComplexNumber.subtract(1, 2, 3, 4, 1));
+        System.out.println("Now try: 3(cos(PI) + isin(PI)) - 5(cos(PI/2) + (sin(PI/2)))i\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.subtract(3, Math.PI, 5, Math.PI / 2, 2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.subtract(3, Math.PI, 5, Math.PI / 2, 2));
+        System.out.println("Now try: (1 + 2i) * (3 + 4i)\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.multiply(1, 2, 3, 4, 1));
+        ComplexNumber.printAsPolarForm(ComplexNumber.multiply(1, 2, 3, 4, 1));
+        System.out.println("Now try: 3(cos(PI) + isin(PI)) * 5(cos(PI/2) + (sin(PI/2)))i\n");
+        ComplexNumber.printAsRectangularForm(ComplexNumber.multiply(3, Math.PI, 5, Math.PI / 2, 2));
+        ComplexNumber.printAsPolarForm(ComplexNumber.multiply(3, Math.PI, 5, Math.PI / 2, 2));
     }
 }
 
 class ComplexNumber {
-    private float a;
-    private float b;
-    private float newA;
-    private float newB;
-    ComplexNumber newComplex;
+    private double a, b, r, theta;
 
-    public ComplexNumber(float _a, float _b) {
-        a = _a;
-        b = _b;
+    private ComplexNumber(Builder builder) {
+        this.a = builder.a;
+        this.b = builder.b;
+        this.r = builder.r;
+        this.theta = builder.theta;
     }
 
-    public float getA() {
+    public static class Builder {
+        private double a = 0, b = 0, r = 0, theta = 0;
+
+        public Builder() {
+        }
+
+        public Builder a(double a) {
+            this.a = a;
+            return this;
+        }
+
+        public Builder b(double b) {
+            this.b = b;
+            return this;
+        }
+
+        public Builder r(double r) {
+            this.r = r;
+            return this;
+        }
+
+        public Builder thetaAsRadians(double theta) {
+            this.theta = theta;
+            return this;
+        }
+
+        public Builder thetaAsDegrees(double theta) {
+            this.theta = Math.toRadians(theta);
+            return this;
+        }
+
+        public ComplexNumber build() {
+            if (this.r == 0) {
+                this.r = Math.sqrt(Math.pow(this.a, 2) + Math.pow(this.b, 2));
+            }
+            if (this.theta == 0) {
+                if (this.a > 0) {
+                    this.theta = Math.atan(this.b / this.a);
+                } else if (this.a < 0) {
+                    this.theta = Math.atan(this.b / this.a) + Math.PI;
+                }
+            }
+            if (this.a == 0) {
+                this.a = this.r * Math.cos(this.theta);
+            }
+            if (this.b == 0) {
+                this.b = this.r * Math.sin(this.theta);
+            }
+            return new ComplexNumber(this);
+        }
+    }
+
+    public double getA() {
         return a;
     }
 
-    public float getB() {
+    public void setA(double a) {
+        this.a = a;
+    }
+
+    public double getB() {
         return b;
     }
 
-    // Addition
-    public ComplexNumber add(ComplexNumber otherNumber) {
-        newA = a + otherNumber.getA();
-        newB = b + otherNumber.getB();
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public void setB(double b) {
+        this.b = b;
     }
 
-    // Subtraction
-    public ComplexNumber subtract(ComplexNumber otherNumber) {
-        newA = a - otherNumber.getA();
-        newB = b - otherNumber.getB();
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public double getR() {
+        return r;
     }
 
-    // Multiplication
-    public ComplexNumber multiply(ComplexNumber otherNumber) {
-        newA = (a * otherNumber.getA()) - (b * otherNumber.getB());
-        newB = (b * otherNumber.getA()) + (a * otherNumber.getB());
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public void setR(double r) {
+        this.r = r;
     }
 
-    // Division
-    public ComplexNumber divide(ComplexNumber otherNumber) {
-        newA = ((a * otherNumber.getA()) + (b * otherNumber.getB()))
-                / ((otherNumber.getA() * otherNumber.getA()) + (otherNumber.getB() * otherNumber.getB()));
-        newB = ((b * otherNumber.getA()) - (a * otherNumber.getB()))
-                / ((otherNumber.getA() * otherNumber.getA()) + (otherNumber.getB() * otherNumber.getB()));
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public double getTheta() {
+        return theta;
     }
 
-    public String toString() {
-        return "(" + a + ") + (" + b + ")i";
+    public void setTheta(double theta) {
+        this.theta = theta;
+    }
+
+    public static ComplexNumber add(ComplexNumber complexNum1, ComplexNumber complexNum2) {
+        return new ComplexNumber.Builder().a(complexNum1.getA() + complexNum2.getA())
+                .b(complexNum1.getB() + complexNum2.getB()).build();
+    }
+
+    public static ComplexNumber add(double complex1Field1, double complex1Field2, double complex2Field1,
+            double complex2Field2, int type) {
+        ComplexNumber result = new ComplexNumber.Builder().build();
+        if (type == 1) {
+            // both complex numbers are in rectangular form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().a(complex1Field1).b(complex1Field2).build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().a(complex2Field1).b(complex2Field2).build();
+            result = add(complexNumber1, complexNumber2);
+        } else if (type == 2) {
+            // both complex numbers are in polar form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().r(complex1Field1).thetaAsRadians(complex1Field2)
+                    .build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().r(complex2Field1).thetaAsRadians(complex2Field2)
+                    .build();
+            result = add(complexNumber1, complexNumber2);
+        }
+        return result;
+    }
+
+    public static ComplexNumber subtract(ComplexNumber complexNum1, ComplexNumber complexNum2) {
+        return new ComplexNumber.Builder().a(complexNum1.getA() - complexNum2.getA())
+                .b(complexNum1.getB() - complexNum2.getB()).build();
+    }
+
+    public static ComplexNumber subtract(double complex1Field1, double complex1Field2, double complex2Field1,
+            double complex2Field2, int type) {
+        ComplexNumber result = new ComplexNumber.Builder().build();
+        if (type == 1) {
+            // both complex numbers are in rectangular form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().a(complex1Field1).b(complex1Field2).build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().a(complex2Field1).b(complex2Field2).build();
+            result = subtract(complexNumber1, complexNumber2);
+        } else if (type == 2) {
+            // both complex numbers are in polar form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().r(complex1Field1).thetaAsRadians(complex1Field2)
+                    .build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().r(complex2Field1).thetaAsRadians(complex2Field2)
+                    .build();
+            result = subtract(complexNumber1, complexNumber2);
+        }
+        return result;
+    }
+
+    public static ComplexNumber multiply(ComplexNumber complexNum1, ComplexNumber complexNum2) {
+        return new ComplexNumber.Builder()
+                .a(complexNum1.getA() * complexNum2.getA() - complexNum1.getB() * complexNum2.getB())
+                .b(complexNum1.getA() * complexNum2.getB() + complexNum1.getB() * complexNum2.getA()).build();
+    }
+
+    public static ComplexNumber multiply(double complex1Field1, double complex1Field2, double complex2Field1,
+            double complex2Field2, int type) {
+        ComplexNumber result = new ComplexNumber.Builder().build();
+        if (type == 1) {
+            // both complex numbers are in rectangular form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().a(complex1Field1).b(complex1Field2).build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().a(complex2Field1).b(complex2Field2).build();
+            result = multiply(complexNumber1, complexNumber2);
+        } else if (type == 2) {
+            // both complex numbers are in polar form
+            ComplexNumber complexNumber1 = new ComplexNumber.Builder().r(complex1Field1).thetaAsRadians(complex1Field2)
+                    .build();
+            ComplexNumber complexNumber2 = new ComplexNumber.Builder().r(complex2Field1).thetaAsRadians(complex2Field2)
+                    .build();
+            result = multiply(complexNumber1, complexNumber2);
+        }
+        return result;
+    }
+
+    public static void printAsRectangularForm(ComplexNumber complexNum) {
+        System.out.println(complexNum.getA() + " + " + complexNum.getB() + "i\n");
+    }
+
+    public static void printAsPolarForm(ComplexNumber complexNum) {
+        System.out.println(
+                complexNum.getR() + "(cos(" + complexNum.getTheta() + ") + (sin(" + complexNum.getTheta() + "))i)\n");
     }
 }
