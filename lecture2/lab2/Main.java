@@ -1,8 +1,6 @@
-import java.util.Scanner;
 
-class Main {
+public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         System.out.println("\nChinnagrit Butbumrung  61070501016 Sec A\n");
         // Input RectangularFrom
         ComplexNumber c1 = ComplexNumber.CreateRectangularFrom(5, 9);
