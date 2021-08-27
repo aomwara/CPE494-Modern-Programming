@@ -1,153 +1,99 @@
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        ComplexNumber complex1;
-        ComplexNumber complex2;
-        ComplexNumber complex3;
-        float a;
-        float b;
-        int choice = 0;
-        // Main menu
-        System.out.println("\n===COMPLEX CALCULATOR===");
-        while (choice != 5) {
-            System.out.println("\nWhat would you like to do?\n");
-            System.out.println("1: Add");
-            System.out.println("2: Subtract");
-            System.out.println("3: Multiply");
-            System.out.println("4: Divide");
-            System.out.println("5: Quit\n");
-            choice = input.nextInt();
-            // Addition
-            if (choice == 1) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi) + (c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.add(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Subtraction
-            if (choice == 2) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi) - (c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.subtract(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Multiplication
-            if (choice == 3) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi)(c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.multiply(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-            // Division
-            if (choice == 4) {
-                System.out.println("\nWhere i = (-1)^1/2,\n");
-                System.out.println("(a + bi)/(c + di)\n");
-                System.out.println("Input a:");
-                a = input.nextFloat();
-                System.out.println("Input b:");
-                b = input.nextFloat();
-                complex1 = new ComplexNumber(a, b);
-                System.out.println("Input c:");
-                a = input.nextFloat();
-                System.out.println("Input d:");
-                b = input.nextFloat();
-                complex2 = new ComplexNumber(a, b);
-                complex3 = complex1.divide(complex2);
-                System.out.println("The result is: " + complex3.toString());
-            }
-        }
-        input.close();
-        System.out.println("\nHave a nice day!\n");
+        // Input RectangularFrom
+        ComplexNumber complexNumber1 = ComplexNumber.CreateRectangularFrom(5, 9);
+        System.out.println("ComplexNumber 1:" + complexNumber1.PrintRectangularFrom());
+
+        // Input PolarFrom
+        ComplexNumber complexNumber2 = ComplexNumber.CreatePolarFrom(10, 30);
+        System.out.println("ComplexNumber 2:" + complexNumber2.PrintRectangularFrom() + "(convert form PolarFrom)\n");
+
+        // Add RectangularFrom and PolarFrom
+        System.out.println("Add: RectangularFrom & PolarFrom");
+        ComplexNumber complexNumber3 = complexNumber1.Add(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
+
+        // Subtract RectangularFrom and PolarFrom
+        System.out.println("Subtract: RectangularFrom & PolarFrom");
+        complexNumber3 = complexNumber1.Subtract(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
+
+        // Multiply RectangularFrom and PolarFrom
+        System.out.println("Multiply: RectangularFrom & PolarFrom");
+        complexNumber3 = complexNumber1.Multiply(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
+        System.out.println("_______End_______");
     }
+
 }
 
 class ComplexNumber {
-    private float a;
-    private float b;
-    private float newA;
-    private float newB;
-    ComplexNumber newComplex;
+    private double a;
+    private double b;
+    private double x;
+    private double y;
 
-    public ComplexNumber(float _a, float _b) {
-        a = _a;
-        b = _b;
+    private ComplexNumber(double _a, double _b) {
+        this.a = _a;
+        this.b = _b;
     }
 
-    public float getA() {
+    public static ComplexNumber CreateRectangularFrom(double _a, double _b) {
+        return new ComplexNumber(_a, _b);
+    }
+
+    public static ComplexNumber CreatePolarFrom(double r, double angle) {
+        return new ComplexNumber(r * Math.cos(angle), r * Math.sin(angle));
+    }
+
+    public double getA() {
         return a;
     }
 
-    public float getB() {
+    public double getB() {
         return b;
     }
 
-    // Addition
-    public ComplexNumber add(ComplexNumber otherNumber) {
-        newA = a + otherNumber.getA();
-        newB = b + otherNumber.getB();
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public ComplexNumber Add(ComplexNumber complex) {
+        x = a + complex.getA();
+        y = b + complex.getB();
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
-    // Subtraction
-    public ComplexNumber subtract(ComplexNumber otherNumber) {
-        newA = a - otherNumber.getA();
-        newB = b - otherNumber.getB();
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public ComplexNumber Subtract(ComplexNumber complex) {
+        x = a - complex.getA();
+        y = b - complex.getB();
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
-    // Multiplication
-    public ComplexNumber multiply(ComplexNumber otherNumber) {
-        newA = (a * otherNumber.getA()) - (b * otherNumber.getB());
-        newB = (b * otherNumber.getA()) + (a * otherNumber.getB());
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public ComplexNumber Multiply(ComplexNumber complex) {
+        x = (a * complex.getA()) + ((b * complex.getB()) * -1);
+        y = (a * complex.getB()) + (b * complex.getA());
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
-    // Division
-    public ComplexNumber divide(ComplexNumber otherNumber) {
-        newA = ((a * otherNumber.getA()) + (b * otherNumber.getB()))
-                / ((otherNumber.getA() * otherNumber.getA()) + (otherNumber.getB() * otherNumber.getB()));
-        newB = ((b * otherNumber.getA()) - (a * otherNumber.getB()))
-                / ((otherNumber.getA() * otherNumber.getA()) + (otherNumber.getB() * otherNumber.getB()));
-        newComplex = new ComplexNumber(newA, newB);
-        return newComplex;
+    public double getR() {
+        return Math.sqrt(a * a + b * b);
     }
 
-    public String toString() {
-        return "(" + a + ") + (" + b + ")i";
+    public double getAngle() {
+        return Math.atan2(b, a) * 180 / Math.PI;
+    }
+
+    public String PrintRectangularFrom() {
+
+        return a + "+ i" + "(" + b + ")";
+    }
+
+    public String PrintPolarFrom() {
+
+        return getR() + "(" + "cos" + "(" + getAngle() + ")" + "+" + "isin" + "(" + getAngle() + ")" + ")";
     }
 }
