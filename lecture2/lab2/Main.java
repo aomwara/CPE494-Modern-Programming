@@ -1,44 +1,49 @@
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("\nChinnagrit Butbumrung  61070501016 Sec A\n");
         // Input RectangularFrom
-        ComplexNumber c1 = ComplexNumber.CreateRectangularFrom(5, 9);
-        System.out.println("value1:" + c1.PrintRectangularFrom());
+        ComplexNumber complexNumber1 = ComplexNumber.CreateRectangularFrom(5, 9);
+        System.out.println("ComplexNumber 1:" + complexNumber1.PrintRectangularFrom());
 
         // Input PolarFrom
-        ComplexNumber c2 = ComplexNumber.CreatePolarFrom(10, 30);
-        System.out.println("value2 (convert form PolarFrom):" + c2.PrintRectangularFrom() + "\n");
+        ComplexNumber complexNumber2 = ComplexNumber.CreatePolarFrom(10, 30);
+        System.out.println("ComplexNumber 2:" + complexNumber2.PrintRectangularFrom() + "(convert form PolarFrom)\n");
 
-        // Add between RectangularFrom and PolarFrom
-        System.out.println("Add between RectangularFrom and PolarFrom");
-        ComplexNumber c3 = c1.Add(c2);
-        System.out.println("Result = " + c3.PrintRectangularFrom() + "\nor " + c3.PrintPolar() + "\n");
+        // Add RectangularFrom and PolarFrom
+        System.out.println("Add: RectangularFrom & PolarFrom");
+        ComplexNumber complexNumber3 = complexNumber1.Add(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
 
-        // Subtract between RectangularFrom and PolarFrom
-        System.out.println("Subtract between RectangularFrom and PolarFrom");
-        c3 = c1.Subtract(c2);
-        System.out.println("Result = " + c3.PrintRectangularFrom() + "\nor " + c3.PrintPolar() + "\n");
+        // Subtract RectangularFrom and PolarFrom
+        System.out.println("Subtract: RectangularFrom & PolarFrom");
+        complexNumber3 = complexNumber1.Subtract(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
 
-        // Multiply between RectangularFrom and PolarFrom
-        System.out.println("Multiply between RectangularFrom and PolarFrom");
-        c3 = c1.Multiply(c2);
-        System.out.println("Result = " + c3.PrintRectangularFrom() + "\nor " + c3.PrintPolar() + "\n");
-        System.out.println("Exit from program");
+        // Multiply RectangularFrom and PolarFrom
+        System.out.println("Multiply: RectangularFrom & PolarFrom");
+        complexNumber3 = complexNumber1.Multiply(complexNumber2);
+        System.out.println(" | Result: " + complexNumber3.PrintRectangularFrom() + "\n | = "
+                + complexNumber3.PrintPolarFrom() + "\n");
+        System.out.println("_______End_______");
     }
 
 }
 
 class ComplexNumber {
-    private double a, b, x, y;
+    private double a;
+    private double b;
+    private double x;
+    private double y;
 
-    private ComplexNumber(double a, double b) {
-        this.a = a;
-        this.b = b;
+    private ComplexNumber(double _a, double _b) {
+        this.a = _a;
+        this.b = _b;
     }
 
-    public static ComplexNumber CreateRectangularFrom(double a, double b) {
-        return new ComplexNumber(a, b);
+    public static ComplexNumber CreateRectangularFrom(double _a, double _b) {
+        return new ComplexNumber(_a, _b);
     }
 
     public static ComplexNumber CreatePolarFrom(double r, double angle) {
@@ -53,25 +58,25 @@ class ComplexNumber {
         return b;
     }
 
-    public ComplexNumber Add(ComplexNumber other) {
-        x = a + other.getA();
-        y = b + other.getB();
-        ComplexNumber newComplex = new ComplexNumber(x, y);
-        return newComplex;
+    public ComplexNumber Add(ComplexNumber complex) {
+        x = a + complex.getA();
+        y = b + complex.getB();
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
-    public ComplexNumber Subtract(ComplexNumber other) {
-        x = a - other.getA();
-        y = b - other.getB();
-        ComplexNumber newComplex = new ComplexNumber(x, y);
-        return newComplex;
+    public ComplexNumber Subtract(ComplexNumber complex) {
+        x = a - complex.getA();
+        y = b - complex.getB();
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
-    public ComplexNumber Multiply(ComplexNumber other) {
-        x = (a * other.getA()) + ((b * other.getB()) * -1);
-        y = (a * other.getB()) + (b * other.getA());
-        ComplexNumber newComplex = new ComplexNumber(x, y);
-        return newComplex;
+    public ComplexNumber Multiply(ComplexNumber complex) {
+        x = (a * complex.getA()) + ((b * complex.getB()) * -1);
+        y = (a * complex.getB()) + (b * complex.getA());
+        ComplexNumber resultComplex = new ComplexNumber(x, y);
+        return resultComplex;
     }
 
     public double getR() {
@@ -87,7 +92,7 @@ class ComplexNumber {
         return a + "+ i" + "(" + b + ")";
     }
 
-    public String PrintPolar() {
+    public String PrintPolarFrom() {
 
         return getR() + "(" + "cos" + "(" + getAngle() + ")" + "+" + "isin" + "(" + getAngle() + ")" + ")";
     }
