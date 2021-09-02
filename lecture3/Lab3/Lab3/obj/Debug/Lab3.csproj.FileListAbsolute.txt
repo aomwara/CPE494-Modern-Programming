@@ -1,0 +1,6 @@
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/bin/Debug/Lab3.exe
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/bin/Debug/Lab3.pdb
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/obj/Debug/Lab3.csproj.AssemblyReference.cache
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/obj/Debug/Lab3.csproj.CoreCompileInputs.cache
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/obj/Debug/Lab3.exe
+/Users/aomwara/Semester 4-1/CPE494-Modern-programming/Lab-Repo/lecture3/Lab3/Lab3/obj/Debug/Lab3.pdb
