@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{9A06323D-3E8B-4EB8-B510-485D8EDFBF8C}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Lab3/ComplexNumber.cs">
+    <Files>
+      <File FileName="Lab3/Program.cs" Line="8" Column="11" />
+      <File FileName="Lab3/ComplexNumber.cs" Line="73" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Lab3" expanded="True">
+            <Node name="Lab3" expanded="True">
+              <Node name="ComplexNumber.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.ItemProperties.Lab3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
