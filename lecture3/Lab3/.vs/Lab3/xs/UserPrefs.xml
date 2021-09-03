@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{9A06323D-3E8B-4EB8-B510-485D8EDFBF8C}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="Lab3/ComplexNumber.cs">
     <Files>
-      <File FileName="Lab3/Program.cs" Line="13" Column="1" />
-      <File FileName="Lab3/ComplexNumber.cs" Line="11" Column="1" />
+      <File FileName="Lab3/Program.cs" Line="8" Column="11" />
+      <File FileName="Lab3/ComplexNumber.cs" Line="73" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
